@@ -12,7 +12,7 @@ app.geometry("350x500")
 img = None
 tcode = None
 qr_data = None
-date_of_class = None  # Global variable to store date entered by teacher
+date_of_class = None  
 
 def generate_qr(data, filename):
     global img
@@ -25,7 +25,7 @@ def generate_qr(data, filename):
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(f"{filename}.png")
 
-    # Update the image label with the newly generated QR code
+    
     my_image = customtkinter.CTkImage(light_image=Image.open(f"{filename}.png"),
                                       dark_image=Image.open(f"{filename}.png"),
                                       size=(200, 200))
@@ -57,12 +57,12 @@ def end_class():
     qr_data = f"TCODE: {tcode}, Date: {date_of_class}, End Time: -"
     generate_qr(qr_data, "end_class")
 
-    # Clear TCODE entry for next use
+    
     tcode_entry.delete(0, END)
     tcode = None
     qr_data = None
 
-    # Disable the End Class button after use
+    
     end_button.configure(state=DISABLED)
     start_button.configure(state=DISABLED)
 
@@ -80,7 +80,7 @@ def check_tcode():
         message_label.configure(text="Please enter a TCODE!", text_color="red")
         return
 
-    connection = None  # Initialize connection to None
+    connection = None  
 
     try:
         connection = mysql.connector.connect(
@@ -123,9 +123,9 @@ def create_table():
         return
 
     day, month, year = date_parts
-    date_of_class = f"{year}-{month}-{day}"  # Format as yyyy-mm-dd for MySQL DATE type
+    date_of_class = f"{year}-{month}-{day}"  
 
-    connection = None  # Initialize connection to None
+    connection = None  
 
     try:
         connection = mysql.connector.connect(
@@ -147,11 +147,11 @@ def create_table():
             connection.close()
 
 
-# Header
+
 header_label = customtkinter.CTkLabel(app, text="Anti Proxy Software", font=("Helvetica", 18, "bold"))
 header_label.grid(row=0, column=0, padx=20, pady=10)
 
-# TCODE Entry and Check Button
+
 tcode_entry = customtkinter.CTkEntry(app, width=300)
 tcode_entry.grid(row=1, column=0, padx=20, pady=10)
 tcode_entry.configure(placeholder_text="TCODE")
@@ -159,7 +159,7 @@ tcode_entry.configure(placeholder_text="TCODE")
 enter_button = customtkinter.CTkButton(app, text="Enter", command=check_tcode, width=300)
 enter_button.grid(row=2, column=0, padx=20, pady=10)
 
-# Date Entry and Create Table Button
+
 table_name_label = customtkinter.CTkLabel(app, text="Enter Date (dd/mm/yyyy):")
 table_name_label.grid(row=3, column=0, padx=20, pady=10)
 
@@ -170,15 +170,15 @@ table_name_entry.configure(placeholder_text="dd/mm/yyyy")
 create_table_button = customtkinter.CTkButton(app, text="Create Table", command=create_table, width=300)
 create_table_button.grid(row=5, column=0, padx=20, pady=10)
 
-# Message Label for feedback
+
 message_label = customtkinter.CTkLabel(app, text="")
 message_label.grid(row=6, column=0, padx=20, pady=10)
 
-# Image Label for QR Code display
-image_label = customtkinter.CTkLabel(app, image=None, text="")  # Initially no image
+
+image_label = customtkinter.CTkLabel(app, image=None, text="") 
 image_label.grid(row=7, column=0, padx=20, pady=20)
 
-# Start and End Class Buttons
+
 start_button = customtkinter.CTkButton(app, text="Start Class", command=start_class, width=300, state=DISABLED)
 start_button.grid(row=8, column=0, padx=20, pady=10)
 
