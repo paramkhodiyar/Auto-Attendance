@@ -1,8 +1,8 @@
 import qrcode
 import customtkinter
 from PIL import Image
-from customtkinter import *
 import mysql.connector
+from customtkinter import *
 from mysql.connector import Error
 
 app = customtkinter.CTk()
