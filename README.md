@@ -42,9 +42,9 @@ This project aims to develop a secure and efficient automatic attendance system 
 
 ## To Do :
 
-[ ] Efficient
-[ ] Student App
-[ ] Teacher App
-[ ] Build web Application
-[ ] Add Login & Logout Feature
-[ ] Use SQL3 Instead SQL Connector
+- [ ] Efficient
+- [ ] Student App
+- [ ] Teacher App
+- [ ] Build web Application
+- [ ] Add Login & Logout Feature
+- [ ] Use SQL3 Instead SQL Connector
