@@ -42,6 +42,7 @@ This project aims to develop a secure and efficient automatic attendance system 
 
 ## To Do :
 
+[x] Login
 [] Efficient
 [] Student App
 [] Teacher App
